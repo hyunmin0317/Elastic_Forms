@@ -1,6 +1,6 @@
 """ 네이버 뉴스 특정 키워드를 포함하는, 특정 날짜 이전 기사 내용 크롤러(정확도순 검색)
-    python [모듈 이름] [키워드] [가져올 페이지 숫자] [결과 파일명]
-    한 페이지에 기사 15개
+    python [모듈 이름] [키워드] [가져올 페이지 숫자]
+    한 페이지에 기사 10개
 """
 
 import csv
@@ -48,7 +48,7 @@ def get_text(URL):
 # 키워드를 찾는 함수
 def find_keyword(file_name):
     font_path = './NanumFont/NanumBarunGothic.ttf'
-    stopwords = {"\',", "함수", "_flash_removeCallback()", "flash", "//", "\'\\n", "\'\\","10", "11", "17", "20", "30", "29일", "위한", "것으로", "있다."}
+    stopwords = {"\',", "함수", "_flash_removeCallback()", "flash", "//", "\",","\'\\n", "\'\\","10", "11", "17", "20", "30", "28일", "오류를","29일", "위한", "것으로", "있다.", "우회하기"}
     keywords = summarize_with_keywords(texts, min_count=5, max_length=10,
                                        beta=0.85, max_iter=10, stopwords=stopwords)
 
