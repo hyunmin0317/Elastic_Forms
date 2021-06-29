@@ -48,7 +48,7 @@ def get_text(URL):
 # 키워드를 찾는 함수
 def find_keyword(file_name):
     font_path = './NanumFont/NanumBarunGothic.ttf'
-    stopwords = {"\',", "함수", "_flash_removeCallback()", "flash", "//", "\",","\'\\n", "\'\\","10", "11", "17", "20", "30", "28일", "오류를","29일", "위한", "위해", "통해", "있는", "따라", "것으로", "있다.", "우회하기"}
+    stopwords = {"지난", "대한", "열린", "\',", "함수", "_flash_removeCallback()", "flash", "//", "\",","\'\\n", "\'\\","10", "11", "17", "20", "30", "28일", "오류를","29일", "위한", "위해", "통해", "있는", "따라", "것으로", "있다.", "우회하기"}
     keywords = summarize_with_keywords(texts, min_count=5, max_length=10,
                                        beta=0.85, max_iter=10, stopwords=stopwords)
 
