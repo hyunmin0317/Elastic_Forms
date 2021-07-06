@@ -1,8 +1,4 @@
-import csv
-import pandas as pd
-import matplotlib.pyplot as plt
 import urllib.request
-import sys
 import os
 from bs4 import BeautifulSoup
 from urllib.parse import quote
