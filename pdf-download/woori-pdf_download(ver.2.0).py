@@ -51,7 +51,7 @@ def download(url, fname):
 
 if __name__ == '__main__':
     keyword = '코로나'
-    path = './'+keyword
+    path = './'+keyword + '/'
     i = 0
     url = WOORI_URL + TARGET_URL + quote(keyword)
     get_link_from_news_title(url)
@@ -59,4 +59,4 @@ if __name__ == '__main__':
 
     for link in download_links:
         i += 1
-        download(url, path+'/'+keyword+str(i)+'.pdf')
+        download(link[:83], path+keyword+str(i)+'.pdf')
