@@ -1,0 +1,682 @@
+	<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=720, user-scalable=no, target-densitydpi=high-dpi">
+    <meta property="og:url" content="http://www.wfri.re.kr/home/sub01_01.php?stxt3=&sse=&skind=TOTAL&sword=%EC%BD%94%EB%A1%9C%EB%82%98">
+    <meta property="og:title" content="우리금융경영연구소">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="http://www.wfri.re.kr/home/img/miri.jpg">
+    <meta property="og:description" content="">
+    <title>우리금융경영연구소</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <script src="./css/jquery.min.js"></script>
+
+	<script>
+	$(document).ready(function(){
+	/*
+		$(".nav_list").hide();
+		$(".menu, .nav_list").mouseover(function(){
+			$(".nav_list").show();
+		});
+		$(".nav_list").mouseout(function(){
+			$(".nav_list").hide();
+		});
+	*/
+
+		$(".menu, .nav_list").hover(function(){
+			$(".nav_list").show();
+		}, function(){
+			$(".nav_list").hide();
+		});
+
+		$(".ham").click(function(){
+			$(".nav_list").toggle();
+		});
+	});
+	</script>
+
+
+		<link rel="stylesheet" type="text/css" media="screen" href="/js/css/jquery-ui-1.10.2.custom.css" /><!--기존-->
+
+
+
+	<script language="javascript" type="text/javascript" src="/js/jquery-ui-1.10.2.custom.js"></script>
+	<script language="javascript" type="text/javascript" src="/js/jquery.fsubmit.js"></script>
+	<script language="javascript" type="text/javascript" src="/js/jquery.alphanum.js"></script>
+	<script language="javascript" type="text/javascript" src="/js/jquery.ba-hashchange.1.3.min.js"></script>
+	<script language="javascript" type="text/javascript" src="/js/clipboard.min.js"></script>
+
+	<script language="javascript" type="text/javascript" src="/js/lib.js"></script>
+
+
+
+		<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+	
+
+
+    <script language="javascript" type="text/javascript">
+
+        $(document).ready(function () {
+
+            //알파벳+숫자 : onlyalphanumber
+            //$('.onlyalphanumber').alphanum();
+            $(".onlyalphanumber").css("ime-mode", "disabled");
+
+            //알파벳 : onlyalpha
+            //$('.onlyalpha').alpha();
+            $(".onlyalpha").css("ime-mode", "disabled");
+
+            //숫자 : onlynumber
+            /*$('.onlynumber').numeric({
+                maxPreDecimalPlaces: 15
+            });*/
+            $(".onlynumber").css("ime-mode", "disabled");
+
+            //숫자 + 소수점허용 : onlynumber1
+            /*$('.onlynumber1').numeric({
+                maxPreDecimalPlaces: 10,
+                maxDecimalPlaces: 1
+            });*/
+            $(".onlynumber1").css("ime-mode", "disabled");
+
+            //숫자 + 소수점허용 : onlynumber2
+            /*$('.onlynumber2').numeric({
+                maxPreDecimalPlaces: 15,
+                maxDecimalPlaces: 2
+            });*/
+            $(".onlynumber2").css("ime-mode", "disabled");
+
+            //도메인 : onlydomain
+            $(".onlydomain").css("ime-mode", "disabled");
+
+            //전화번호 : onlytel
+            $(".onlytel").css("ime-mode", "disabled");
+
+            //숫자거부 : nonumber
+            //$('.nonumber').alpha();
+
+            
+            $("#sfrm").submit(function () {
+                if (formChecker("sfrm", "") == false) {
+                	return false;
+                }
+            });
+            
+        });
+
+
+        //알파벳+숫자 : onlyalphanumber
+        $(document).on("blur keyup", ".onlyalphanumber", function (e) {
+            var newval = $(this).val().replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '');
+            if ($(this).val() != newval) {
+                alert("한글은 입력이 불가능합니다.");
+                $(this).val("");
+                $(this).focus();
+            }
+        });
+
+        //알파벳 : onlyalpha
+        $(document).on("blur keyup", ".onlyalpha", function (e) {
+            var newval = $(this).val().replace(/[^a-zA-Z]/g, '');
+            if ($(this).val() != newval) {
+                alert("한글은 입력이 불가능합니다.");
+                $(this).val("");
+                $(this).focus();
+            }
+        });
+
+        //숫자 : onlynumber
+        $(document).on("blur keyup", ".onlynumber", function (e) {
+            $(this).val($(this).val().replace(/[^0-9]/g, ''));
+        });
+
+        //숫자 + 소수점허용 : onlynumber1
+        $(document).on("blur keyup", ".onlynumber1", function (e) {
+            $(this).val($(this).val().replace(/[^0-9.]/g, ''));
+        });
+
+        //숫자 + 소수점허용 : onlynumber2
+        $(document).on("blur keyup", ".onlynumber2", function (e) {
+            $(this).val($(this).val().replace(/[^0-9.]/g, ''));
+        });
+
+        //도메인 : onlydomain
+        $(document).on("blur keyup", ".onlydomain", function (e) {
+            //$(this).val($(this).val().replace(/[^a-z0-9\-.ㄱ-ㅎㅏ-ㅣ가-힝]/g, ''));
+            $(this).val($(this).val().replace(/[^a-z0-9\-.]/g, ''));
+        });
+
+        //전화번호 : onlytel
+        $(document).on("blur keyup", ".onlytel", function (e) {
+            $(this).val($(this).val().replace(/[^0-9\-]/g, ''));
+        });
+
+        $(document).on("click", ".btnSearch", function (e) {
+            $("#sfrm").submit();
+            return false;
+        });
+
+        $(document).on("click", ".btnBack", function (e) {
+            history.back();
+            return false;
+        });
+
+        /*$(document).on("click", "#btnSubmit", function (e) {
+            $("#frm").submit();
+            return false;
+        });*/
+
+        //Enter Submit
+        $(document).on("keypress", ":input[type=text], :input[type=password]", function (e) {
+            if (e.which == 13) {
+                //if ($(":input[type=file]", $(this).parents("form")).length > 0 || $(":input[type=submit]", $(this).parents("form")).length > 0 || $(":input[type=image]", $(this).parents("form")).length > 0) {
+                if ($(":input[type=submit]", $(this).parents("form")).length > 0 || $(":input[type=image]", $(this).parents("form")).length > 0) {
+                    //alert("통과1 / " + $(":input[type=file]", $(this).parents("form")).length + " / " + $(":input[type=submit]", $(this).parents("form")).length + " / " + $(":input[type=image]", $(this).parents("form")).length);
+                } else if (($(":input[type=text]", $(this).parents("form")).length + $(":input[type=password]", $(this).parents("form")).length + $(":input[type=tel]", $(this).parents("form")).length) == 1) {
+                    //alert("통과2");
+                } else {
+                    $(this).parents("form").submit();
+                }
+            }
+        });
+		
+
+        $(document).on("keyup", ":input[type='text'], :input[type='tel'], :input[type='number'], :input[type='password']", function (e) {
+			if($(this).attr("maxlength")){
+				var ml = Number($(this).attr("maxlength"));
+				if(Number($(this).val().length) >= ml){
+
+					var now_selector = $(this);
+
+					var now_index = $(":input[type='text'], :input[type='tel'], :input[type='number'], :input[type='password'], :input[type='checkbox'], :input[type='radio'], select, textarea").index($(this));
+
+					$(":input[type='text'], :input[type='tel'], :input[type='number'], :input[type='password'], :input[type='checkbox'], :input[type='radio'], select, textarea").eq(now_index + 1).focus().select();
+
+				}
+			}
+        });
+
+
+    </script>	<script language="javascript" type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+	<script language="javascript" type="text/javascript" src="./js/paging.js"></script>
+
+</head>
+<body>
+<div class="top">
+    <ul class="wrap_center">
+      <!--li><a href="./login.php">로그인</a></li-->
+	        <li><a href="./join.php">우리금융인 인증</a></li>
+      <li><a href="./sub01_03.php">우리금융인 게시판</a></li>
+	      </ul>
+</div>
+
+<div class="header wrap_center">
+  <h1><a href="./"><img src="./img/logo.png"/></a></h1>
+
+  <div class="nav_list">
+      <div class="wrap_center">
+        <ul>
+          <li><a href="./sub01_01.php">최신보고서</a></li>
+          <li><a href="./sub01_01_02.php">우리 리서치 PLUS</a></li>
+          <li><a href="./sub01_02.php">영상자료</a></li>
+          <li><a href="./sub01_03.php">우리금융인 게시판</a></li>
+        </ul>
+        <ul>
+          <li><a href="./sub02_01.php">인사말</a></li>
+          <li><a href="./sub02_02.php">연혁</a></li>
+					<li><a href="./sub02_06.php">가치체계</a></li>
+
+          <li><a href="./sub02_03.php">조직소개</a></li>
+          <li><a href="./sub02_04.php">경영공시</a></li>
+          <li><a href="./sub02_05.php">오시는 길</a></li>
+        </ul>
+        <ul>
+          <li><a href="./sub03_01.php">공지사항</a></li>
+          <li><a href="./sub03_04.php">ESG 정보공개</a></li>
+          <li><a href="./sub03_02.php">보도자료</a></li>
+          <li><a href="./sub03_03.php">채용안내</a></li>
+        </ul>
+        <ul>
+		  <li><a href="./sub04_01.php">통합검색</a></li>
+        </ul>
+      </div>
+    </div>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="./sub01_01.php">연구보고서</a></li>
+      <li><a href="./sub02_01.php">연구소소개</a></li>
+      <li><a href="./sub03_01.php">연구소소식</a></li>
+      <li><a href="./sub04_01.php">통합검색</a></li>
+    </ul>
+  </nav>
+  <div class="box">
+<form id="topform" name="topform" method="get" action="./sub04_01.php">
+  			<input type="text" name="sword" id="topform_sword" value="" class="search_field required" title="검색어" placeholder="검색하기">
+  			<button class="search_btn btn_search_topform" onclick="">검색</button>
+</form>
+
+
+	<script type="text/javaScript" language="javascript">
+
+	    $(document).ready(function () {
+
+
+
+	        $("#topform").submit(function () {
+	            if (formChecker("topform", "") != false) {
+					return true;
+	            }
+	            return false;
+	        });
+
+
+	        $('.btn_search_topform').bind("click", function () {
+				$("#topform").submit();
+				return false;
+
+	        });
+
+
+	    });
+
+
+	</script>
+
+
+    <div class="ham">
+      <img src="./img/ham.png">
+    </div>
+  </div>
+</div>
+<script>
+	$(document).ready(function(){
+		$("#depth01_list, #depth02_list").hide();
+
+		$("#depth01").click(function(){
+			$("#depth01_list").toggle();  });
+		$("#depth02").click(function(){
+			$("#depth02_list").toggle();  });
+	});
+</script>
+
+
+<div class="sub_nav">
+  <div class="wrap_center">
+    <div class="pad_top">
+      <a href=""><img src="./img/home.png"></a>
+    </div>
+    <div class="pad_top">
+      <img src="./img/nav_arrow.png">
+    </div>
+    <div class="pad_top">
+      연구보고서
+			<ul id="depth01_list">
+				<li><a href="./sub01_01.php">연구보고서</a></li>
+				<li><a href="./sub02_01.php">연구소소개</a></li>
+				<li><a href="./sub03_01.php">연구소소식</a></li>
+				<li><a href="./sub04_01.php">열린지식</a></li>
+			</ul>
+    </div>
+    <div id="depth01">
+      <img src="./img/nav_down.png">
+    </div>
+    <div class="pad_top">
+      <img src="./img/nav_arrow.png">
+    </div>
+
+<div class="pad_top">
+  최신보고서
+  <ul id="depth02_list">
+    <li><a href="./sub01_01.php">최신보고서</a></li>
+    <li><a href="./sub01_01_02.php">우리 리서치 PLUS</a></li>    
+    <li><a href="./sub01_02.php">영상자료</a></li>
+    <li><a href="./sub01_03.php">우리금융인 게시판</a></li>
+  </ul>
+</div>
+<div id="depth02">
+  <img src="./img/nav_down.png">
+</div>
+</div>
+</div>
+
+<div class="wrap_center">
+  <div class="tit_area num02">
+    <h2>연구보고서<h2>
+    <div class="bul"></div>
+  </div>
+
+<div class="con">
+
+
+	
+
+
+
+			<!--
+
+			-->
+
+
+	
+
+	
+
+
+  <div class="table ">
+
+
+
+    <table>
+      <thead>
+        <tr>
+          <th width="100">번호</th>
+          <!--th width="140">구분</th-->
+          <th width="*">제목</th>
+          <th width="200">저자</th>
+          <th width="150">날짜</th>
+          <th width="100">조회수</th>
+        </tr>
+      </thead>
+
+	  
+						<tr>
+							<td>40</td>
+							<td class="t_left tit"><a href="/home/sub01_01_view.php?no=4473&ss=page%3D%26sse%3D%26skind%3D%EC%BD%94%EB%A1%9C%EB%82%98%26skind%3D%EC%BD%94%EB%A1%9C%EB%82%98">2021년 경제성장률 전망치 4.3%로 상향 조정 - 5월 경제 브리프</a></td>
+							<td>허문종, 이다은, 박수빈</td>
+							<td>2021-05-13</td>
+							<td>2766</td>
+						</tr>
+		
+						<tr>
+							<td>39</td>
+							<td class="t_left tit"><a href="/home/sub01_01_view.php?no=4468&ss=page%3D%26sse%3D%26skind%3D%EC%BD%94%EB%A1%9C%EB%82%98%26skind%3D%EC%BD%94%EB%A1%9C%EB%82%98">바이든 취임 100일의 성과는 한국 경제 전망의 상향 요인 - 바이든 취임 1...</a></td>
+							<td>허문종, 이다은, 박수빈</td>
+							<td>2021-04-29</td>
+							<td>3189</td>
+						</tr>
+		
+						<tr>
+							<td>38</td>
+							<td class="t_left tit"><a href="/home/sub01_01_view.php?no=4451&ss=page%3D%26sse%3D%26skind%3D%EC%BD%94%EB%A1%9C%EB%82%98%26skind%3D%EC%BD%94%EB%A1%9C%EB%82%98">수출·투자 중심의 경기 회복세 지속 - 3월 경제 브리프</a></td>
+							<td>허문종, 이다은, 박수빈</td>
+							<td>2021-03-09</td>
+							<td>4702</td>
+						</tr>
+		
+						<tr>
+							<td>37</td>
+							<td class="t_left tit"><a href="/home/sub01_01_view.php?no=4440&ss=page%3D%26sse%3D%26skind%3D%EC%BD%94%EB%A1%9C%EB%82%98%26skind%3D%EC%BD%94%EB%A1%9C%EB%82%98">2021년 경제성장률 전망치 상향 조정 - 2월 경제 브리프</a></td>
+							<td>허문종, 김진희, 이다은, 박수빈</td>
+							<td>2021-02-10</td>
+							<td>5169</td>
+						</tr>
+		
+						<tr>
+							<td>36</td>
+							<td class="t_left tit"><a href="/home/sub01_01_view.php?no=4435&ss=page%3D%26sse%3D%26skind%3D%EC%BD%94%EB%A1%9C%EB%82%98%26skind%3D%EC%BD%94%EB%A1%9C%EB%82%98">위험자산 가격 상승세 지속 전망 - 2월 금융시장 브리프</a></td>
+							<td>허문종, 김진희, 이다은, 박수빈</td>
+							<td>2021-02-04</td>
+							<td>4824</td>
+						</tr>
+		
+						<tr>
+							<td>35</td>
+							<td class="t_left tit"><a href="/home/sub01_01_view.php?no=4423&ss=page%3D%26sse%3D%26skind%3D%EC%BD%94%EB%A1%9C%EB%82%98%26skind%3D%EC%BD%94%EB%A1%9C%EB%82%98">수출과 투자를 중심으로 향후 성장 모멘텀 강화 전망 - 1월 경제 브리프</a></td>
+							<td>허문종, 김진희, 이다은, 박수빈</td>
+							<td>2021-01-12</td>
+							<td>6412</td>
+						</tr>
+		
+						<tr>
+							<td>34</td>
+							<td class="t_left tit"><a href="/home/sub01_01_view.php?no=4420&ss=page%3D%26sse%3D%26skind%3D%EC%BD%94%EB%A1%9C%EB%82%98%26skind%3D%EC%BD%94%EB%A1%9C%EB%82%98">위험자산 가격, 숨고르기 장세 예상 - 1월 금융시장 브리프</a></td>
+							<td>허문종, 김진희, 이다은, 박수빈</td>
+							<td>2021-01-06</td>
+							<td>5338</td>
+						</tr>
+		
+						<tr>
+							<td>33</td>
+							<td class="t_left tit"><a href="/home/sub01_01_view.php?no=4419&ss=page%3D%26sse%3D%26skind%3D%EC%BD%94%EB%A1%9C%EB%82%98%26skind%3D%EC%BD%94%EB%A1%9C%EB%82%98">기업실적, 이제는 우상향! - 2021년 비금융 상장기업 실적과 주요 산업의 업...</a></td>
+							<td>김수진, 성지영</td>
+							<td>2020-12-24</td>
+							<td>5049</td>
+						</tr>
+		
+						<tr>
+							<td>32</td>
+							<td class="t_left tit"><a href="/home/sub01_01_view.php?no=4414&ss=page%3D%26sse%3D%26skind%3D%EC%BD%94%EB%A1%9C%EB%82%98%26skind%3D%EC%BD%94%EB%A1%9C%EB%82%98">20.3Q 상장 중소규모 기업의 실적 동향과 시사점</a></td>
+							<td>김수진, 성지영</td>
+							<td>2020-12-14</td>
+							<td>4429</td>
+						</tr>
+		
+						<tr>
+							<td>31</td>
+							<td class="t_left tit"><a href="/home/sub01_01_view.php?no=4412&ss=page%3D%26sse%3D%26skind%3D%EC%BD%94%EB%A1%9C%EB%82%98%26skind%3D%EC%BD%94%EB%A1%9C%EB%82%98">2021년 경제성장률 상향 조정 가능성 우세 - 12월 경제 브리프</a></td>
+							<td>허문종, 이다은</td>
+							<td>2020-12-09</td>
+							<td>3918</td>
+						</tr>
+		
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+  <div class="paging">
+	<!--
+    <a href="#" class="direction fisrt"><span>처음</span></a>
+    <a href="#" class="direction prev"><span>이전</span></a>
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <strong>3</strong>
+    <a href="#" class="direction next"><span>다음</span></a>
+    <a href="#" class="direction last"><span>끝</span></a>
+	-->
+  </div>
+
+
+		<script type="text/javascript">
+			/*
+            PG = new Paging();
+            PG.config = {
+                pageVariable: 'page',
+                numberFormat: '%n',
+                showFirstLast: false,
+                thisPageStyle: '',
+                otherPageStyle: '',
+                itemPerPage: 10,
+                pagePerView: 10
+            }
+
+            document.write(PG);
+			*/
+		</script>
+
+
+    <script language="javascript" type="text/javascript">
+
+		PG = new Paging(40);
+		PG.config = {
+			pageVariable: 'page',
+			numberFormat: '%n',
+			showFirstLast: true,
+			thisPageStyle: '',
+			otherPageStyle: '',
+			itemPerPage: 10,
+			pagePerView: 10
+		}
+		var paging = PG.toString();
+		//var paging = PG;
+		//document.write(PG);
+
+
+        $(document).ready(function () {
+
+			$(".paging").html(paging);
+
+		});
+
+	</script>
+
+
+
+
+  <div class="search">
+
+<form name="sfrm" id="sfrm" method="get" action="?">
+<input type="hidden" name="stxt3" id="sfrm_stxt3" value="" />
+<input type="hidden" name="sse" id="sfrm_sse" value="" />
+
+  			<fieldset>
+  				<p class="search_board">
+  					<select name="skind" id="skind" title="분류선택">
+  						<option value="TOTAL">제목+내용</option>
+  						<option value="BRD_TITLE">제목</option>
+  						<option value="BRD_CNTNT">내용</option>
+  						<option value="BRD_TXT1">저자</option>
+  					</select>
+  					<input name="sword" id="sword" type="text" title="검색어 입력" value="" class="input_style01" style="width:200px">
+  					<a href="#" class="btn_search_form"><img src="./img/btn_search.jpg" alt="검색"></a>
+  				</p>
+  			</fieldset>
+
+</form>
+
+  </div>
+
+
+
+
+
+			
+
+
+
+	<script type="text/javaScript" language="javascript">
+
+	    $(document).ready(function () {
+
+						set_js_value("skind", "TOTAL");
+						set_js_value("sword", "코로나");
+			set_js_value("sse", "");
+			set_js_value("stxt3", "");
+
+
+			//setRadioValue("f", "v", "frm");
+			//setCheckboxValue("f", "v", "frm");
+
+	        $('.btn_search_form').bind("click", function () {
+				$("#sfrm").submit();
+				return false;
+
+	        });
+
+
+	        $('#stxt3, #sse').bind("change", function () {
+				$("#sfrm_stxt3").val($("#stxt3").val());
+				$("#sfrm_sse").val($("#sse").val());
+				$("#sfrm").submit();
+				return false;
+
+	        });
+
+
+	    });
+
+
+	</script>
+
+
+</div>
+
+
+</div>
+
+<script>
+$(document).ready(function(){
+    //$(".foot_list").hide();
+
+    $(".site_list").click(function(){
+      $(".foot_list").toggle();
+   });
+});
+</script>
+
+<div id="footer">
+		<div class="footer_btn">
+      <ul id="footer_list" class="wrap_center">
+        <li><a href="./privacy02.php">개인정보처리방침</a></li>
+        <li><a href="./privacy01.php">이용약관</a></li>
+        <!--li><a href="./">이메일무단수집거부</a></li-->
+        <!--li><a href="./">사이트맵</a></li-->
+        <li id="line_no"><a href="./sub02_05.php">Contact Us</a></li>
+      </ul>
+
+		</div>
+		<div class="footer_txt">
+      <div class="wrap_center">
+        <h1><img src="./img/foot_logo.png"></h1>
+  			<p>
+  				서울시 중구 소공로 48 우리금융디지털타워 7층(우 04631) | 대표번호 02-2173-0500<br>
+          Copyright 2020 WFRI. Allrights Reserved.
+        </p>
+
+        <div class="site_list">
+          계열사 사이트
+
+          <div class="foot_list">
+            <ul>
+              <li><a href="https://www.woorifg.com">우리금융지주</a></li>
+              <li><a href="https://www.wooribank.com">우리은행</a></li>
+              <li><a href="https://www.wooricard.com">우리카드</a></li>
+              <li><a href="http://www.wooriib.com">우리종합금융</a></li>
+              <li><a href="http://www.woorifis.com">우리FIS </a></li>
+              <li><a href="https://www.wooricredit.com">우리신용정보</a></li>
+              <li><a href="https://www.woorifs.co.kr">우리펀드서비스</a></li>
+              <li><a href="https://www.wooriat.com">우리자산신탁</a></li>
+              <li><a href="https://www.wooriam.kr">우리자산운용</a></li>
+              <li><a href="https://www.wooriglobalam.com/main/main.asp">우리글로벌자산운용</a></li>
+              <li><a href="http://wooripe.com/">우리PE</a></li>
+              <li><a href="https://www.woorifcapital.com/portal/portalMain.do?null">우리금융캐피탈 </a></li>
+              <li><a href="https://www.woorisavingsbank.com/">우리금융저축은행 </a></li>
+
+            </ul>
+          </div>
+
+        </div>
+      </div>
+  </div>
+</div>
+
+</body>
+</html>
