@@ -2,12 +2,12 @@ from pandas_datareader import data as pdr
 import yfinance as yf
 import matplotlib.pyplot as plt
 
-yf.pdr_override()
-samsung = pdr.get_data_yahoo('005930.KS', start='2021-01-01')
+def visualize_stock(name, code, start):
 
-#print(samsung)
-#print(samsung.index)
-#print(samsung.columns)
+    stock = pdr.get_data_yahoo(code, start=start)
+    plt.plot(stock.index, stock.Close, 'b', label=name)
+    plt.show()
 
-plt.plot(samsung.index, samsung.Close, 'b', label='Samsung Electronics')
-plt.show()
+if __name__ == '__main__':
+    yf.pdr_override()
+    visualize_stock('Samsung Electronics', '005930.KS', '2021-01-01')
