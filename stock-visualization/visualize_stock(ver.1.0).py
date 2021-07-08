@@ -3,7 +3,6 @@ import yfinance as yf
 import matplotlib.pyplot as plt
 
 def visualize_stock(name, code, start):
-
     stock = pdr.get_data_yahoo(code, start=start)
     plt.plot(stock.index, stock.Close, 'b', label=name)
     plt.show()
