@@ -11,7 +11,7 @@ URL = 'https://finance.naver.com/item/main.nhn?code=005930'
 def get_text(URL):
     source_code_from_URL = Request(URL, headers={'User-Agent': 'Mozilla/5.0'})    
     soup = BeautifulSoup(urlopen(source_code_from_URL), 'lxml', from_encoding='UTF-8')
-    table = soup.find('table', {'class': 'tb_type1 tb_num tb_type1_ifrs'}):
+    table = soup.find('table', {'class': 'tb_type1 tb_num tb_type1_ifrs'})
     tbody = table.select('tbody')
     print(tbody)
 
