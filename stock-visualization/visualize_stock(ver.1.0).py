@@ -1,6 +1,6 @@
 from pandas_datareader import data as pdr
-import yfinance as yf
 import matplotlib.pyplot as plt
+import yfinance as yf
 
 def visualize_stock(name, code, start):
     stock = pdr.get_data_yahoo(code, start=start)
