@@ -1,0 +1,33 @@
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <div id="chart_div"></div>
+  <script type="text/javascript">
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawTitleSubtitle);
+
+function drawTitleSubtitle() {
+
+      var data = google.visualization.arrayToDataTable([
+        ['City', '2010 Population',],
+        ['New York City, NY', 8175000],
+        ['Los Angeles, CA', 3792000],
+        ['Chicago, IL', 2695000],
+        ['Houston, TX', 2099000],
+        ['Philadelphia, PA', 1526000]
+      ]);
+
+      var materialOptions = {
+        title: 'Population of Largest U.S. Cities',
+
+
+        hAxis: {
+          title: 'Total Population',
+          minValue: 0,
+        },
+        vAxis: {
+          title: 'City'
+        },
+      };
+      var materialChart = new google.visualization.BarChart(document.getElementById('chart_div'));
+      materialChart.draw(data, materialOptions);
+    }
+  </script>
