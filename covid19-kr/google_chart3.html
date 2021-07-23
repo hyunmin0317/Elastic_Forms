@@ -1,0 +1,54 @@
+<div style="display:inline-block;" id="chart_div"></div><!-- 첫번째 그래프 -->
+<div style="display:inline-block;" id="chart_div2"></div><!-- 두번째 그래프 -->
+
+<div style="text-align:center;">
+	groupWidth 설정 바꿔보기<br>
+	<button type="button" onclick="chart_options.bar.groupWidth='10%'; drawChart()">20%</button>
+	<button type="button" onclick="chart_options.bar.groupWidth='50%'; drawChart()">50%</button>
+	<button type="button" onclick="chart_options.bar.groupWidth='120%'; drawChart()">100%</button>
+</div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+	google.charts.load('current', {packages:['corechart']});
+	// 로딩 완료시 함수 실행하여 차트 생성
+google.charts.setOnLoadCallback(drawChart);
+
+// 차트 옵션을 전역으로 설정했습니다. 설정을 바꿔보는 예제를 만들기 위해서요.
+var chart_options = {
+	title : '다리 갯수',
+	width : 450,
+	height : 300,
+	bar : {
+		groupWidth : '20%' // 예제에서 이 값을 수정
+	},
+	legend : {
+		// position : 'none'
+	}
+};
+
+function drawChart(){
+
+	// 첫번째 차트 데이터
+	var data = google.visualization.arrayToDataTable([
+		['ㅋㅋ', '다리수', {role : 'annotation'}], // 그래프 위에 설명 추가 {role : 'annotation'}
+		['개', 4, '개 4'], // 맨뒤 내용 "개 4" 는 그래프에 표시될 설명 지정 (안하면 에러남)
+		['메뚜기', 6, '메뚜기 6'], // [항목이름, 값(숫자), 그래프 설명]
+		['문어', 8, '문어 8']
+	]);
+
+	// 두번째 차트 데이터
+	var data2 = google.visualization.arrayToDataTable([
+		['동물다리', '내다리', {role : 'annotation'}],
+		['달팽이', 1, '달팽이 1(?)'],
+		['메뚜기', 6, '메뚜기 6'],
+		['문어', 8, '문어 8']
+	]);
+
+	var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+	var chart2 = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
+	chart.draw(data, chart_options);
+	chart2.draw(data2, chart_options);
+}
+
+</script>
