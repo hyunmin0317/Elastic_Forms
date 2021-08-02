@@ -1,11 +1,13 @@
 # Elastic Practice
-### 엘라스틱 팀 프로젝트 - 구현 연습 (2021.06.27 ~ )
+### 엘라스틱 팀 프로젝트 - 구현 연습 (2021.06.27 ~ 2021.07.31)
 
 ---
 
 ## :notebook_with_decorative_cover: Subject
 
-* ### [Elastic Form](https://github.com/sunjungAn/Elastic-Form)
+* ### [Stock Insight](https://github.com/hyunmin0317/Stock-Insight)
+
+* ### 금융/경영 보고서 분석
 
 <br>
 
